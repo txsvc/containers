@@ -6,6 +6,6 @@ items:
     metadata:
       name: base-container
       labels:
-        io.openshift.tags: "rhel 8/9 base container"
+        io.openshift.tags: rhel8
       annotations:
         description: "container imaged based on ubi"

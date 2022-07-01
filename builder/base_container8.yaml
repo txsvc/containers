@@ -6,7 +6,7 @@ items:
     metadata:
       name: base-container8
       labels:
-        io.openshift.tags: "base rhel8"
+        io.openshift.tags: rhel8
     spec:
       source:
         git:
