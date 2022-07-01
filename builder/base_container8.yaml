@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: List
+items:
+  - kind: BuildConfig
+    apiVersion: build.openshift.io/v1
+    metadata:
+      name: base-container8
+      labels:
+        io.openshift.tags: "base rhel8"
+    spec:
+      source:
+        git:
+          ref: core-1
+          uri: "https://github.com/txsvc/ccollections.git"
+        #contextDir: base-container
+        type: Git
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: base-container/Dockerfile.ubi8
+      output:
+        to:
+          kind: ImageStreamTag
+          name: base-container:ubi8.6
+          namespace: openshift
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+        - type: ConfigChange

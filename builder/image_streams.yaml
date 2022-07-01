@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: List
+items:
+  - kind: ImageStream
+    apiVersion: image.openshift.io/v1
+    metadata:
+      name: base-container
+      labels:
+        io.openshift.tags: "rhel 8/9 base container"
+      annotations:
+        description: "container imaged based on ubi"
