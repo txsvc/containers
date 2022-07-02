@@ -4,24 +4,24 @@ items:
   - kind: BuildConfig
     apiVersion: build.openshift.io/v1
     metadata:
-      name: base-container8
+      name: base-golang
       labels:
-        io.openshift.tags: rhel8
+        io.openshift.tags: rhel8 golang
     spec:
       source:
         git:
-          ref: core-1
+          ref: main
           uri: "https://github.com/txsvc/ccollections.git"
-        #contextDir: base-container
+        contextDir: base-golang
         type: Git
       strategy:
         type: Docker
         dockerStrategy:
-          dockerfilePath: base-container/Dockerfile.ubi8
+          dockerfilePath: Dockerfile
       output:
         to:
           kind: ImageStreamTag
-          name: base-container:ubi8.6
+          name: base-golang:1.0-1
           namespace: openshift
       triggers:
         - type: ImageChange

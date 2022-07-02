@@ -1,5 +1,26 @@
-VERSION = 1.0.0
+VERSION = 1.0
 BUILD_NAMESPACE = ccollections
+
+#
+# all the local podman builds ...
+#
+
+.PHONY: build-all
+build-all: base-container base-golang
+
+.PHONY: base-container
+base-container:
+	podman build -f base-container/Dockerfile -t ccollections/base-container:${VERSION}-1 .
+	podman tag ccollections/base-container:${VERSION}-1 ccollections/base-container:latest
+
+.PHONY: base-golang
+base-golang:
+	podman build -f base-golang/Dockerfile -t ccollections/base-golang:${VERSION}-1 base-golang
+	podman tag ccollections/base-golang:${VERSION}-1 ccollections/base-golang:latest
+
+#
+# build on OpenShift
+#
 
 .PHONY: create_namespaces
 create_namespaces:
@@ -10,8 +31,9 @@ config_build:
 	oc policy add-role-to-user system:image-builder \
 		system:serviceaccount:${BUILD_NAMESPACE}:builder \
 		--namespace=openshift
-	oc apply -f builder/image_streams.yaml -n openshift
-	oc apply -f builder/base_container8.yaml -n ${BUILD_NAMESPACE}
+	oc apply -f image_streams.yaml -n openshift
+	oc apply -f base-container/build_config.yaml -n ${BUILD_NAMESPACE}
+	oc apply -f base-golang/build_config.yaml -n ${BUILD_NAMESPACE}
 
 .PHONY: cleanup
 cleanup:

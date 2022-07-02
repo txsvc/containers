@@ -9,3 +9,12 @@ items:
         io.openshift.tags: rhel8
       annotations:
         description: "container imaged based on ubi"
+
+  - kind: ImageStream
+    apiVersion: image.openshift.io/v1
+    metadata:
+      name: base-golang
+      labels:
+        io.openshift.tags: rhel8 golang
+      annotations:
+        description: "golang s2i base image"

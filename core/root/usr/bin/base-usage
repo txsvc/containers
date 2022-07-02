@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-cat <<EOF
-This image serves as the base image.
-EOF

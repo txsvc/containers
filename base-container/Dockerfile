@@ -7,7 +7,7 @@ LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
       io.k8s.description="$DESCRIPTION" \
       io.k8s.display-name="base container" \
-      name="base-container/ubi8.6" \
+      name="base-container/ubi8/1.0" \
       version="1"
 
 ENV APP_ROOT=/opt/app-root \
@@ -38,7 +38,7 @@ RUN INSTALL_PKGS="bsdtar \
   yum -y clean all --enablerepo='*'
 
 # Copy extra files to the image.
-COPY ./core/root/ /
+COPY ./common-scripts/root/ /
 
 # Directory with the sources is set as the working directory so all STI scripts
 # can execute relative to this path.
