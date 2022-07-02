@@ -22,12 +22,12 @@ base-golang:
 # build on OpenShift
 #
 
-.PHONY: create_namespaces
-create_namespaces:
-	oc new-project ${BUILD_NAMESPACE}
+.PHONY: create-namespace
+create-namespace:
+	oc new-project ${BUILD_NAMESPACE} --display-name="Container collections" --description="A collection of containers to build more specialised containers"
 
-.PHONY: config_build
-config_build:
+.PHONY: build-all-openshift
+build-all-openshift: create-namespace
 	oc policy add-role-to-user system:image-builder \
 		system:serviceaccount:${BUILD_NAMESPACE}:builder \
 		--namespace=openshift
