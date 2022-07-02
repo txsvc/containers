@@ -22,6 +22,8 @@ base-golang:
 base-ruby:
 	podman build -f base-ruby/Dockerfile.27 -t ccollections/base-ruby27:${VERSION}-1 base-ruby
 	podman tag ccollections/base-ruby27:${VERSION}-1 ccollections/base-ruby27:latest
+	podman build -f base-ruby/Dockerfile.30 -t ccollections/base-ruby30:${VERSION}-1 base-ruby
+	podman tag ccollections/base-ruby30:${VERSION}-1 ccollections/base-ruby30:latest
 
 #
 # build on OpenShift
