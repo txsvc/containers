@@ -18,6 +18,11 @@ base-golang:
 	podman build -f base-golang/Dockerfile -t ccollections/base-golang:${VERSION}-1 base-golang
 	podman tag ccollections/base-golang:${VERSION}-1 ccollections/base-golang:latest
 
+.PHONY: base-ruby
+base-ruby:
+	podman build -f base-ruby/Dockerfile.27 -t ccollections/base-ruby27:${VERSION}-1 base-ruby
+	podman tag ccollections/base-ruby27:${VERSION}-1 ccollections/base-ruby27:latest
+
 #
 # build on OpenShift
 #
