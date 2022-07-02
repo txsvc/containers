@@ -1,8 +1,8 @@
 # Container collections
 
-Why Container collections? All coontainers under this repository are *base-line* conatiner, i.e. they provide a consistent starting point to build more specialized containers for all kinds of purposes.
+Why Container collections? All containers in this repository are *base-line* containers, i.e. they provide a consistent starting point to build more specialized containers for all kinds of applications.
 
-This collection follows the idea of a Software Collections, as implemented in the [sclorg](https://github.com/sclorg) organization. The [sclorg/welcome](https://github.com/sclorg/welcome) page provides a detailled overview of the concept.
+This collection follows the idea of a Software Collection, as implemented in the [Software Collections](https://github.com/sclorg) organization. The [sclorg/welcome](https://github.com/sclorg/welcome) page provides a detailled overview of the concept.
 
 ## Repository Overview
 
