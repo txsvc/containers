@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/ruby-27
 
 ENV RAKE_DB_INIT="false" \
-    BUNDLER_VERSION='2.3.17' \
+    BUNDLER_VERSION='2.2.22' \
     YARN_VERSION='1.22.19' \
     BUNDLE_DIR='./bundle' \
     PUMA_OPTIONS='--config ../etc/puma.cfg'
@@ -24,4 +24,6 @@ RUN chown -R 1001:0 ${APP_ROOT} && chmod -R ug+rwx ${APP_ROOT} && \
 USER 1001
 
 # Install bundler
-RUN gem install bundler -v $BUNDLER_VERSION --no-document
+RUN gem install bundler -v $BUNDLER_VERSION --no-document && \
+    bundle config set --local path $BUNDLE_DIR && \
+    bundle config set --local without 'development:test'
