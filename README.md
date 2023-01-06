@@ -18,7 +18,7 @@ The source code for most of the base- and s2i images can be found in the [Softwa
 
 ## Build locally
 
-To build the container images locally, make sure you have [Podman]() installed and running. 
+To build the container images locally, make sure you have [Podman](https://podman.io/) installed and running. 
 
 Start the build with:
 
@@ -41,5 +41,5 @@ This creates a dedicated project/namespace to run the builds in and deploys the 
 To verify that the builds are running:
 
 ```shell
-oc get builds -n ccolletions
+oc get builds -n $BUILD_NAMESPACE
 ```

@@ -1,6 +1,6 @@
 VERSION = 1.0
 REPOSITORY = txsvc-hq/txsvc-hq
-BUILD_NAMESPACE = txsvc-hq
+BUILD_NAMESPACE = txsvchq
 
 #
 # all the local podman builds ...
