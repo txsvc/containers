@@ -1,5 +1,6 @@
 VERSION = 1.0
-BUILD_NAMESPACE = ccollections
+REPOSITORY = txsvc-hq/txsvc-hq
+BUILD_NAMESPACE = txsvchq
 
 #
 # all the local podman builds ...
@@ -10,20 +11,20 @@ build-all: base-container base-golang
 
 .PHONY: base-container
 base-container:
-	podman build -f base-container/Dockerfile -t ccollections/base-container:${VERSION}-1 .
-	podman tag ccollections/base-container:${VERSION}-1 ccollections/base-container:latest
+	podman build -f base-container/Dockerfile -t ${REPOSITORY}/base-container:${VERSION}-1 .
+	podman tag ${REPOSITORY}/base-container:${VERSION}-1 ${REPOSITORY}/base-container:latest
 
 .PHONY: base-golang
 base-golang:
-	podman build -f base-golang/Dockerfile -t ccollections/base-golang:${VERSION}-1 base-golang
-	podman tag ccollections/base-golang:${VERSION}-1 ccollections/base-golang:latest
+	podman build -f base-golang/Dockerfile -t ${REPOSITORY}/base-golang:${VERSION}-1 base-golang
+	podman tag ${REPOSITORY}/base-golang:${VERSION}-1 ${REPOSITORY}/base-golang:latest
 
 .PHONY: base-ruby
 base-ruby:
-	podman build -f base-ruby/Dockerfile.27 -t ccollections/base-ruby27:${VERSION}-1 base-ruby
-	podman tag ccollections/base-ruby27:${VERSION}-1 ccollections/base-ruby27:latest
-	podman build -f base-ruby/Dockerfile.30 -t ccollections/base-ruby30:${VERSION}-1 base-ruby
-	podman tag ccollections/base-ruby30:${VERSION}-1 ccollections/base-ruby30:latest
+	podman build -f base-ruby/Dockerfile.27 -t ${REPOSITORY}/base-ruby27:${VERSION}-1 base-ruby
+	podman tag ${REPOSITORY}/base-ruby27:${VERSION}-1 ${REPOSITORY}/base-ruby27:latest
+	podman build -f base-ruby/Dockerfile.30 -t ${REPOSITORY}/base-ruby30:${VERSION}-1 base-ruby
+	podman tag ${REPOSITORY}/base-ruby30:${VERSION}-1 ${REPOSITORY}/base-ruby30:latest
 
 #
 # build on OpenShift
