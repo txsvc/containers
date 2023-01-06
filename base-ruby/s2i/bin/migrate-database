@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+RAKE_DB_INIT=${RAKE_DB_INIT:-"false"}
+
+# unset $VERSION, otherwise migrations won't work ...
+# see https://stackoverflow.com/questions/25141782/rails-rake-dbmigrate-doesnt-work-nothing-happens
+unset VERSION
+
+if [ "$RAKE_DB_INIT" == "false" ]; then
+  echo "---> Executing 'rake db:migrate' ..."
+  bundle exec rake db:migrate
+else
+  echo "---> Executing 'rake db:setup' ..."
+  bundle exec rake db:setup
+fi

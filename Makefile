@@ -18,16 +18,23 @@ base-golang:
 	podman build -f base-golang/Dockerfile -t ccollections/base-golang:${VERSION}-1 base-golang
 	podman tag ccollections/base-golang:${VERSION}-1 ccollections/base-golang:latest
 
+.PHONY: base-ruby
+base-ruby:
+	podman build -f base-ruby/Dockerfile.27 -t ccollections/base-ruby27:${VERSION}-1 base-ruby
+	podman tag ccollections/base-ruby27:${VERSION}-1 ccollections/base-ruby27:latest
+	podman build -f base-ruby/Dockerfile.30 -t ccollections/base-ruby30:${VERSION}-1 base-ruby
+	podman tag ccollections/base-ruby30:${VERSION}-1 ccollections/base-ruby30:latest
+
 #
 # build on OpenShift
 #
 
-.PHONY: create_namespaces
-create_namespaces:
-	oc new-project ${BUILD_NAMESPACE}
+.PHONY: create-namespace
+create-namespace:
+	oc new-project ${BUILD_NAMESPACE} --display-name="Container collections" --description="A collection of containers to build more specialised containers"
 
-.PHONY: config_build
-config_build:
+.PHONY: build-all-openshift
+build-all-openshift: create-namespace
 	oc policy add-role-to-user system:image-builder \
 		system:serviceaccount:${BUILD_NAMESPACE}:builder \
 		--namespace=openshift
