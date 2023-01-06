@@ -29,8 +29,7 @@ RUN INSTALL_PKGS="bsdtar \
   unzip \
   xz \
   wget \
-  which \
-  yum" && \
+  which" && \
   mkdir -p ${HOME}/.pki/nssdb && \
   chown -R 1001:0 ${HOME}/.pki && \
   yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
